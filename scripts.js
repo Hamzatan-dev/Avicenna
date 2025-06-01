@@ -158,21 +158,26 @@ function submitAppointment() {
         birthDate: formData.get('birthDate'),
         notes: formData.get('notes')
     };
-    const confirmationMessage = `
-Bedankt ${appointmentData.firstName} ${appointmentData.lastName}!
 
-Uw afspraak is bevestigd:
-• Dokter: ${appointmentData.doctor}
-• Datum: ${new Date(appointmentData.date).toLocaleDateString('nl-BE')}
-• Tijd: ${appointmentData.time}
-
-We sturen u een bevestigingsmail naar ${appointmentData.email}.
-    `;
-    showStep(4);
-    setTimeout(() => {
-        resetModal();
-        closeAppointmentModal();
-    }, 3500);
+    fetch('http://localhost:3000/api/afspraak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(appointmentData)
+    })
+        .then(response => {
+            if (response.ok) {
+                showStep(4);
+                setTimeout(() => {
+                    resetModal();
+                    closeAppointmentModal();
+                }, 3500);
+            } else {
+                alert('Er ging iets mis bij het boeken van uw afspraak.');
+            }
+        })
+        .catch(() => {
+            alert('Er ging iets mis bij het boeken van uw afspraak.');
+        });
 }
 
 function resetModal() {
