@@ -80,8 +80,10 @@ function previousStep() {
 
 function showStep(step) {
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-    const tabs = ['doctorTab', 'dateTimeTab', 'patientTab'];
-    document.getElementById(tabs[step - 1]).classList.add('active');
+    const tabs = ['doctorTab', 'dateTimeTab', 'patientTab', 'completeTab'];
+    if (tabs[step - 1]) {
+        document.getElementById(tabs[step - 1]).classList.add('active');
+    }
     updateProgress(step);
     updateButtons(step);
     currentStep = step;
@@ -89,9 +91,9 @@ function showStep(step) {
 
 function updateProgress(step) {
     const progressLine = document.getElementById('progressLine');
-    const width = ((step - 1) / 2) * 100;
+    const width = ((step - 1) / 3) * 100;
     progressLine.style.width = width + '%';
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 4; i++) {
         const stepEl = document.getElementById(`step${i}`);
         const labelEl = stepEl.nextElementSibling;
         stepEl.classList.remove('active', 'completed');
@@ -118,6 +120,12 @@ function updateButtons(step) {
     } else if (step === 3) {
         nextBtn.textContent = 'Afspraak Bevestigen';
         nextBtn.disabled = false;
+    } else if (step === 4) {
+        nextBtn.style.display = 'none';
+        prevBtn.style.display = 'none';
+    } else {
+        nextBtn.style.display = '';
+        prevBtn.style.display = '';
     }
 }
 
@@ -160,9 +168,11 @@ Uw afspraak is bevestigd:
 
 We sturen u een bevestigingsmail naar ${appointmentData.email}.
     `;
-    alert(confirmationMessage);
-    resetModal();
-    closeAppointmentModal();
+    showStep(4);
+    setTimeout(() => {
+        resetModal();
+        closeAppointmentModal();
+    }, 3500);
 }
 
 function resetModal() {
@@ -175,6 +185,8 @@ function resetModal() {
     document.querySelectorAll('.doctor-option').forEach(opt => opt.classList.remove('selected'));
     document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
     document.getElementById('timeSlots').innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #52796f;">Selecteer eerst een datum om beschikbare tijdstippen te zien</div>';
+    document.getElementById('prevBtn').style.display = '';
+    document.getElementById('nextBtn').style.display = '';
     showStep(1);
 }
 

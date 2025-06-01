@@ -5,19 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avicenna - Uw Gezondheid, Onze Zorg</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Avicenna</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#dokters">Dokters</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#" class="cta-button" onclick="openAppointmentModal()">Afspraak Maken</a>
+            <div class="logo"><i class="fa-solid fa-staff-snake"></i>Avicenna</div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#dokters">Dokters</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#" class="cta-button" onclick="openAppointmentModal()">Afspraak Maken</a>
+            </div>
         </nav>
     </header>
 
@@ -29,10 +32,6 @@
                     <h1>Uw Gezondheid, Onze Zorg</h1>
                     <p>Maak eenvoudig een afspraak met onze ervaren dokters. Kwaliteitszorg op uw gemak, wanneer u het
                         nodig heeft.</p>
-                    <div class="hero-cta">
-                        <a href="#" class="cta-button" onclick="openAppointmentModal()">🗓 Afspraak Maken</a>
-                        <a href="#dokters" class="cta-button cta-outline">👨‍⚕️ Onze Dokters</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -42,11 +41,12 @@
             <div class="container">
                 <h2 class="section-title">Onze Dokters</h2>
                 <div class="doctors-grid">
+                    <div class="left-arrow"><img src="images/double-chevron.png" alt="arrow"></div>
                     <div class="doctor-card">
                         <div class="doctor-avatar">👨‍⚕️</div>
                         <h4>Dr. Hanife Peker</h4>
                         <div class="specialty">Huisarts</div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                        <div class="number">011 26 16 92</div>
                         <button class="cta-button"
                             onclick="selectDoctor('Dr. Hanife Peker', 'Huisarts')">Selecteren</button>
                     </div>
@@ -54,10 +54,11 @@
                         <div class="doctor-avatar">👩‍⚕️</div>
                         <h4>Dr. Naile Bostanci</h4>
                         <div class="specialty">Huisarts</div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                        <div class="number">011 26 16 92</div>
                         <button class="cta-button"
                             onclick="selectDoctor('Dr. Naile Bostanci', 'Huisarts')">Selecteren</button>
                     </div>
+                    <div class="right-arrow"><img src="images/double-chevron.png" alt="arrow"></div>
                 </div>
             </div>
         </section>
@@ -68,11 +69,8 @@
             <div class="container">
                 <div class="contact-info">
                     <p><strong>Adres:</strong><br>
-                        Kerkstraat 123<br>
-                        3580 Beringen, België
-                    </p>
-                    <p><strong>Telefoon:</strong>
-                        <a href="tel:+3211XXXXXX">+32 11 XX XX XX</a>
+                        Edward Staintonstraat 22<br>
+                        3550 Heusden-Zolder
                     </p>
                     <p><strong>E-mail:</strong>
                         <a href="mailto:info@avicenna.be">info@avicenna.be</a>
@@ -88,7 +86,8 @@
                     </p>
                 </div>
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps?q=Kerkstraat+123,+3580+Beringen,+België&output=embed"
+                    <iframe
+                        src="https://www.google.com/maps?q=Edward+Staintonstraat+22,+3550+Heusden-Zolder,+België&output=embed"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
@@ -144,6 +143,10 @@
                     <div class="progress-step-container">
                         <div class="progress-step" id="step3"><span>3</span></div>
                         <div class="step-label">Gegevens</div>
+                    </div>
+                    <div class="progress-step-container">
+                        <div class="progress-step" id="step4"><span><i class="fa-solid fa-check"></i></span></div>
+                        <div class="step-label">Compleet</div>
                     </div>
                 </div>
             </div>
@@ -219,11 +222,18 @@
                         </div>
                     </form>
                 </div>
+                <!-- Step 4: Complete -->
+                <div class="tab-content" id="completeTab">
+                    <div class="complete-message">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>Afspraak Compleet!</h3>
+                        <p>Uw afspraak is succesvol geboekt.<br>U ontvangt een bevestiging per e-mail.</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-secondary" id="prevBtn" onclick="previousStep()"
-                    disabled>Vorige</button>
-                <button type="button" class="cta-button" id="nextBtn" onclick="nextStep()">Volgende</button>
+                <button type="button" id="prevBtn" onclick="previousStep()" disabled>Vorige</button>
+                <button type="button" id="nextBtn" onclick="nextStep()">Volgende</button>
             </div>
         </div>
     </div>
