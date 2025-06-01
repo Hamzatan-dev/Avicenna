@@ -294,13 +294,6 @@ nav {
     box-shadow: 0 8px 32px rgba(64, 145, 108, 0.08);
 }
 
-@media (max-width: 900px) {
-    #contact .container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-}
-
 .appointment {
     padding: 80px 0;
     background: linear-gradient(135deg, #2d6a4f, #40916c);
@@ -765,6 +758,26 @@ nav {
     gap: 1rem;
 }
 
+footer {
+    background: #2d6a4f;
+    color: white;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-top: 4px solid #40916c;
+}
+
+footer p {
+    opacity: 0.95;
+}
+
+@media (max-width: 900px) {
+    #contact .container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 600px) {
     .form-row {
         grid-template-columns: 1fr;
@@ -779,19 +792,6 @@ nav {
     }
 }
 
-footer {
-    background: #2d6a4f;
-    color: white;
-    text-align: center;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    border-top: 4px solid #40916c;
-}
-
-footer p {
-    opacity: 0.95;
-}
-
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -804,5 +804,160 @@ footer p {
     .hero-cta {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 0.5rem;
+        max-width: 98vw;
+        min-width: unset;
+    }
+
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+    }
+
+    .progress-container {
+        padding-left: 0;
+        margin-top: 1rem;
+    }
+
+    .progress-step,
+    .progress-step.active,
+    .progress-step.completed {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .step-label {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .modal-footer button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+
+    .doctor-selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .time-slots {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+
+    .doctor-option {
+        padding: 1rem;
+    }
+
+    .doctor-option .doctor-avatar-small {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+
+    .complete-message i {
+        font-size: 2rem;
+    }
+
+    .modal-instruction,
+    .modal-heading {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content {
+        padding: 0.2rem;
+    }
+
+    .modal-header,
+    .modal-body {
+        padding: 0.5rem;
+    }
+
+    .modal-title {
+        font-size: 1rem;
+    }
+
+    .modal-footer button {
+        font-size: 0.95rem;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 0 5px;
+    }
+
+    .section-title,
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .hero {
+        padding: 120px 0 120px;
+    }
+
+    .doctors-grid {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .doctor-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #contact .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-map iframe {
+        height: 220px;
+    }
+
+    .appointment {
+        padding: 40px 0;
+    }
+
+    .appointment h2 {
+        font-size: 1.3rem;
+    }
+
+    .appointment-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 0;
+        width: 100%;
     }
 }
